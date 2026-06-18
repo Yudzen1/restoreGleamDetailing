@@ -1,215 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Restore Gleam Detailing | Bring Back the Shine</title>
-  <meta name="description" content="Mobile auto detailing & paint correction in Chicago & North Shore. Bring Back the Shine." />
-
-  <meta property="og:title" content="Restore Gleam Detailing" />
-  <meta property="og:description" content="Mobile detailing & paint correction — Chicago & North Shore. Bring Back the Shine." />
-  <meta property="og:type" content="website" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restore Gleam Detailing | Cars, Boats & Luxury Vehicles</title>
+  <meta name="description" content="Restore Gleam Detailing offers mobile detailing, paint correction, polishing, ceramic coating, headlight restoration, boat detailing, and luxury vehicle detailing in Chicago & North Shore.">
   <style>
-    :root{
-      --bg:#070708;
-      --panel:rgba(255,255,255,.04);
-      --line:rgba(255,255,255,.10);
-      --text:#f3f4f6;
-      --muted:#b8bcc6;
-      --accent1:#2d6cdf;
-      --accent2:#9bbcff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(900px 450px at 18% 12%, rgba(120,140,255,.20), transparent 60%),
-        radial-gradient(900px 450px at 82% 8%, rgba(200,200,255,.12), transparent 55%),
-        var(--bg);
-      color:var(--text);
-    }
-    a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 80px}
-    .top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand img{width:64px;height:64px;border-radius:16px;border:1px solid var(--line);}
-    .name{font-weight:900;letter-spacing:.2px;font-size:24px;line-height:1.1}
-    .tag{color:var(--muted);font-weight:700;margin-top:4px}
-
-    .btns{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 14px;border-radius:12px;text-decoration:none;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-      font-weight:800;
-    }
-    .btn:hover{background:rgba(255,255,255,.07)}
-    .btn.primary{border:0;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#071022}
-
-    .hero{
-      margin-top:18px;
-      border:1px solid var(--line);
-      border-radius:22px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      overflow:hidden;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:0;
-    }
-    @media (max-width:920px){.hero{grid-template-columns:1fr}}
-    .heroLeft{padding:22px 22px 18px}
-    .heroLeft h1{margin:0 0 10px;font-size:40px;line-height:1.04}
-    .heroLeft p{margin:0;color:var(--muted);font-size:16px;max-width:75ch;line-height:1.55}
-    .pills{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-    .pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:rgba(0,0,0,.18);color:var(--muted);font-weight:700}
-    .heroRight{padding:18px;border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center}
-    @media (max-width:920px){.heroRight{border-left:0;border-top:1px solid var(--line)}}
-    .heroRight img{width:min(360px,100%);height:auto;border-radius:18px;border:1px solid var(--line);background:#0c0c0d}
-    .mini{margin-top:14px;color:var(--muted);font-size:13px}
-    .section{margin-top:16px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media (max-width:920px){.grid{grid-template-columns:1fr}}
-    .card{
-      border:1px solid var(--line);
-      border-radius:18px;
-      background:var(--panel);
-      padding:18px;
-    }
-    .card h2{margin:0 0 10px;font-size:18px}
-    .svc{display:grid;gap:10px;margin-top:10px}
-    .svcItem{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(0,0,0,.18)}
-    .svcItem b{display:block;margin-bottom:4px}
-    .svcItem span{color:var(--muted);font-size:14px;line-height:1.45}
-
-    .gallery{display:grid;gap:12px}
-    .pairs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:920px){.pairs{grid-template-columns:1fr}}
-    figure{margin:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0c0c0d}
-    figure img{width:100%;height:280px;object-fit:cover;display:block}
-    figcaption{padding:10px 12px;color:var(--muted);font-size:13px}
-    .footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#07111f;color:#f6fbff;line-height:1.55} a{color:inherit} .wrap{max-width:1180px;margin:auto;padding:24px} header{background:linear-gradient(135deg,#06101d,#0d315c 55%,#0b80d0);padding:22px 0;position:sticky;top:0;z-index:5;box-shadow:0 10px 30px #0006} .top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap} .brand{font-size:24px;font-weight:800;letter-spacing:.3px} .tag{color:#98d7ff;font-size:14px} .nav{display:flex;gap:10px;flex-wrap:wrap} .btn{display:inline-block;padding:11px 16px;border-radius:999px;background:#1fa3ff;color:#001321;text-decoration:none;font-weight:800} .btn.out{background:transparent;color:#fff;border:1px solid #3ba9ee} .hero{padding:72px 0;background:radial-gradient(circle at 15% 20%,#1d86d850,transparent 35%),linear-gradient(180deg,#081426,#07111f)} h1{font-size:clamp(38px,7vw,78px);line-height:.98;margin:0 0 18px;font-weight:900} h2{font-size:36px;margin:0 0 20px} .lead{font-size:20px;color:#d8eefc;max-width:860px} .chips{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0} .chip{border:1px solid #2c79b5;background:#0b2139;border-radius:999px;padding:9px 13px;color:#bfe7ff;font-weight:700} section{padding:54px 0;border-top:1px solid #123653} .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px} .card{background:#0b1d32;border:1px solid #16486e;border-radius:22px;padding:22px;box-shadow:0 12px 26px #0004} .card h3{margin:0 0 8px;color:#72c7ff} .work{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px} .work-card{margin:0;background:#0b1d32;border:1px solid #174d75;border-radius:20px;overflow:hidden;box-shadow:0 12px 26px #0005} .work-card img{width:100%;height:310px;object-fit:cover;display:block} figcaption{padding:12px 14px;color:#ccecff;font-weight:800} .highlight{background:linear-gradient(135deg,#0b2340,#0e568c);border:1px solid #289de8;border-radius:26px;padding:28px} .contact{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px} footer{padding:32px 0;color:#a8c3d5;text-align:center} @media(max-width:700px){.work-card img{height:260px}}
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"AutoRepair",
-    "name":"Restore Gleam Detailing",
-    "description":"Mobile auto detailing & paint correction in the Chicago area. Bring Back the Shine.",
-    "telephone":"+1-847-964-3474",
-    "areaServed":["Chicago, IL","North Shore, IL"],
-    "sameAs":["https://www.facebook.com/profile.php?id=100070429428563"]
-  }
-  </script>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <img src="assets/logo_badge.png" alt="Restore Gleam Detailing logo">
-        <div>
-          <div class="name">Restore Gleam Detailing</div>
-          <div class="tag">Bring Back the Shine</div>
-        </div>
-      </div>
-
-      <div class="btns">
-        <a class="btn primary" href="tel:+18479643474">Call: (847) 964-3474</a>
-        <a class="btn" href="sms:+18479643474?&body=Hi!%20I%20want%20a%20quote.%20Car:%20____%20Service:%20____%20Location:%20____%20When:%20____">Text for a Quote</a>
-        <a class="btn" href="https://share.google/oVqqS8y4kFeMaY0pD" target="_blank" rel="noopener">Google Maps</a>
-        <a class="btn" href="https://www.facebook.com/profile.php?id=100070429428563" target="_blank" rel="noopener">Facebook</a>
-      </div>
-    </div>
-
-    <section class="hero">
-      <div class="heroLeft">
-        <h1>Premium shine.<br>Clean reflections.</h1>
-        <p>
-          Mobile auto detailing & paint correction in <b>Chicago & North Shore</b>.
-          We remove swirls and scratches, restore gloss, renew headlights, apply wax or ceramic coating,
-          and help your car look its best.
-        </p>
-
-        <div class="pills">
-          <div class="pill">✅ Paint Correction</div>
-          <div class="pill">✅ Buffing (Rotary)</div>
-          <div class="pill">✅ Ceramic Coating</div>
-          <div class="pill">✅ Headlight Restoration</div>
-          <div class="pill">✅ Mobile Service</div>
-        </div>
-
-        <div class="mini">
-          Fast quote: text us 2–3 photos + your car model + location.
-        </div>
-      </div>
-
-      <div class="heroRight">
-        <img src="assets/logo.png" alt="Restore Gleam Detailing">
-      </div>
-    </section>
-
-    <div class="section grid">
-      <section class="card">
-        <h2>Services</h2>
-        <div class="svc">
-          <div class="svcItem"><b>Paint Correction</b><span>Paint restoration including all types of polishing, touch-up work for chips, ceramic coating, and other services — including pre-paint preparation.</span></div>
-          <div class="svcItem"><b>Buff</b><span>Deep polishing using a rotary machine for maximum correction and gloss.</span></div>
-          <div class="svcItem"><b>Polishing</b><span>Light polishing / dual-action (DA) polishing to enhance gloss and remove light defects.</span></div>
-          <div class="svcItem"><b>Touch Up Paint</b><span>Chip touch-ups to improve appearance and help protect exposed areas.</span></div>
-          <div class="svcItem"><b>Road Rash</b><span>Damage from stones/road debris (hood, bumper, arches, etc.). We assess and recommend the best solution.</span></div>
-          <div class="svcItem"><b>Remove Scratches</b><span>Scratch and scuff removal where possible (depends on depth/clear coat condition).</span></div>
-          <div class="svcItem"><b>Ceramic Coating</b><span>Ceramic protection for long-lasting gloss and easier washing.</span></div>
-          <div class="svcItem"><b>Wax</b><span>Wax protection for shine and water beading (budget-friendly option).</span></div>
-          <div class="svcItem"><b>Headlight Polishing</b><span>Headlight restoration/polishing for better clarity and improved appearance.</span></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Before / After</h2>
-        <div class="gallery">
-          <div class="pairs">
-            <figure>
-              <img loading="lazy" src="assets/before1.jpg" alt="Headlight before">
-              <figcaption>Headlight Restoration — <b>Before</b></figcaption>
-            </figure>
-            <figure>
-              <img loading="lazy" src="assets/after1.jpg" alt="Headlight after">
-              <figcaption>Headlight Restoration — <b>After</b></figcaption>
-            </figure>
-
-            <figure>
-              <img loading="lazy" src="assets/before2.jpg" alt="Paint correction before">
-              <figcaption>Paint Correction — <b>Before</b></figcaption>
-            </figure>
-            <figure>
-              <img loading="lazy" src="assets/after2.jpg" alt="Paint correction after">
-              <figcaption>Paint Correction — <b>After</b></figcaption>
-            </figure>
-          </div>
-
-          <figure>
-            <img loading="lazy" src="assets/split_compare.jpg" alt="Scratch removal before and after">
-            <figcaption>Scratch / Swirl Removal — <b>Before / After</b></figcaption>
-          </figure>
-
-          <div class="btns" style="margin-top:6px;">
-            <a class="btn primary" href="tel:+18479643474">Call Now</a>
-            <a class="btn" href="sms:+18479643474?&body=Hi!%20I%20want%20a%20quote.%20Car:%20____%20Service:%20____%20Location:%20____%20When:%20____">Send Photos</a>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="footer">
-      © <span id="y"></span> Restore Gleam Detailing • Chicago & North Shore • Bring Back the Shine
-    </div>
-  </div>
-
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
-</body>
-</html>
+<header><div class="wrap top"><div><div class="brand">Restore Gleam Detailing</div><div class="tag">Bring Back the Shine</div></div><nav class="nav"><a class="btn" href="tel:+18479643474">Call</a><a class="btn out" href="sms:+18479643474">Text Quote</a><a class="btn out" href="https://www.facebook.com/profile.php?id=61591024310351&mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></nav></div></header>
+<main>
+<section class="hero"><div class="wrap"><h1>Premium detailing for cars, boats & luxury vehicles.</h1><p class="lead">Mobile detailing, paint correction, polishing, ceramic coating, headlight restoration and boat detailing in Chicago & North Shore. We help vehicles look clean, glossy and protected.</p><div class="chips"><span class="chip">Cars</span><span class="chip">SUVs</span><span class="chip">Trucks</span><span class="chip">Boats</span><span class="chip">Luxury & Exotic Vehicles</span></div><div class="contact"><a class="btn" href="tel:+18479643474">Call: (847) 964-3474</a><a class="btn out" href="sms:+18479643474">Send Photos for a Quote</a></div></div></section>
+<section><div class="wrap"><h2>Services</h2><div class="grid"><div class="card"><h3>Paint Correction</h3><p>Swirl and scratch removal, gloss restoration, polishing and protection.</p></div><div class="card"><h3>Luxury Vehicle Detailing</h3><p>Careful detailing for premium vehicles, exotic cars, performance cars and daily drivers that deserve a show-room shine.</p></div><div class="card"><h3>Boat Detailing</h3><p>Boat wash, polishing, oxidation removal, gel coat shine restoration and wax protection.</p></div><div class="card"><h3>Ceramic Coating</h3><p>Long-lasting gloss and protection that makes washing easier.</p></div><div class="card"><h3>Interior Detailing</h3><p>Deep cleaning for seats, carpets, panels, cup holders, windows and trim.</p></div><div class="card"><h3>Headlight Restoration</h3><p>Restore clarity and improve the appearance of foggy headlights.</p></div></div></div></section>
+<section><div class="wrap"><div class="highlight"><h2>Now Detailing Boats</h2><p class="lead">Restore Gleam Detailing now works with boats too — exterior wash, polishing, oxidation removal, gel coat restoration and wax protection. Great for making your boat look fresh, clean and glossy again.</p></div></div></section>
+<section><div class="wrap"><h2>Luxury & Boat Projects</h2><p class="lead">Recent work from Restore Gleam Detailing — boats, luxury cars, performance vehicles and premium detailing projects.</p><div class="work"><figure class="work-card"><img src="assets/gallery/boat-detailing-1.jpg" alt="Restore Gleam Detailing - Boat Detailing" loading="lazy"><figcaption>Boat Detailing</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/boat-detailing-2.jpg" alt="Restore Gleam Detailing - Boat Detailing" loading="lazy"><figcaption>Boat Detailing</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/boat-detailing-3.jpg" alt="Restore Gleam Detailing - Boat Detailing" loading="lazy"><figcaption>Boat Detailing</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-1.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-2.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-3.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-4.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-5.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-6.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-7.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-8.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure>
+<figure class="work-card"><img src="assets/gallery/luxury-detailing-9.jpg" alt="Restore Gleam Detailing - Luxury Vehicle" loading="lazy"><figcaption>Luxury Vehicle</figcaption></figure></div></div></section>
+<section><div class="wrap"><h2>Follow Our Latest Work</h2><p class="lead">See more new projects, boat detailing, luxury vehicles and before/after results on our new Facebook page.</p><div class="contact"><a class="btn" href="https://www.facebook.com/profile.php?id=61591024310351&mibextid=wwXIfr" target="_blank" rel="noopener">Open Facebook</a><a class="btn out" href="sms:+18479643474">Text for Quote</a></div></div></section>
+</main><footer><div class="wrap">© Restore Gleam Detailing • Chicago & North Shore • Bring Back the Shine</div></footer>
+</body></html>
