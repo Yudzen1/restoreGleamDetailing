@@ -44,6 +44,9 @@
     .boat-note h3 { margin:0 0 8px; font-size:28px; }
     .boat-note p { margin:0; color:#d8e9ff; line-height:1.55; }
     .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .blog-section { background:linear-gradient(180deg,#07101f,#0a1830); }
+    .blog-intro { color:#cfe4ff; line-height:1.55; margin:-10px 0 24px; max-width:760px; }
+    .blog-shell { background:#fff; color:#07101f; border:1px solid rgba(255,255,255,.14); border-radius:24px; padding:22px; min-height:220px; overflow:hidden; box-shadow:0 18px 45px rgba(0,0,0,.3); }
     footer { padding:26px 0; border-top:1px solid rgba(255,255,255,.1); color:#a7bde0; text-align:center; }
     @media(max-width:800px) {
       .hero-grid,.services,.before-after,.gallery { grid-template-columns:1fr; }
@@ -63,6 +66,7 @@
         <div><h1>Restore Gleam Detailing</h1><p>Bring Back the Shine</p></div>
       </a>
       <div class="buttons">
+        <a class="btn secondary" href="#blog">Blog</a>
         <a class="btn" href="tel:+18479643474">Call</a>
         <a class="btn secondary" href="sms:+18479643474">Text Quote</a>
         <a class="btn secondary" href="https://www.facebook.com/profile.php?id=61591024310351&mibextid=wwXIfr" target="_blank">Facebook</a>
@@ -147,6 +151,17 @@
           <figure class="work-card"><img src="assets/new-gallery/bmw-m8-finished.jpg" alt="BMW M8 Finished"><figcaption>BMW M8 Finished</figcaption></figure>
           <figure class="work-card"><img src="assets/new-gallery/mercedes-amg-polish.jpg" alt="Paint Correction"><figcaption>Paint Correction</figcaption></figure>
           <figure class="work-card"><img src="assets/new-gallery/lamborghini-urus-polishing.jpg" alt="Luxury Paint Correction"><figcaption>Luxury Paint Correction</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section" id="blog">
+      <div class="wrap">
+        <h2 class="section-title">Detailing Tips &amp; Updates</h2>
+        <p class="blog-intro">Helpful guides, professional detailing advice and the latest updates from Restore Gleam Detailing.</p>
+        <div class="blog-shell">
+          <div id="soro-blog"></div>
+          <script src="https://app.trysoro.com/api/embed/176f83db-9e65-450f-bc43-50d114eb60e5" defer></script>
         </div>
       </div>
     </section>
