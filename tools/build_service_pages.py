@@ -376,6 +376,27 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
   }});
 }});
 
+
+/* Чёрная пятница: баннер сам исчезает после 1 декабря 2026, без правки сайта. */
+(function(){{
+  var END = new Date('2026-12-02T00:00:00-06:00');
+  if (new Date() >= END) return;
+  var bar = document.createElement('div');
+  bar.className = 'promo-bar';
+  bar.innerHTML = '<span><strong>Black Friday \u2014 20% off any service</strong> booked Nov 28 \u2013 Dec 1.</span>'
+    + '<a class="promo-cta" href="#quote">Get My Estimate</a>'
+    + '<button class="promo-x" aria-label="Dismiss offer">\u00d7</button>';
+  document.body.insertBefore(bar, document.body.firstChild);
+  bar.querySelector('.promo-x').addEventListener('click', function(){{
+    bar.remove();
+    try {{ sessionStorage.setItem('promoClosed','1'); }} catch(e){{}}
+  }});
+  try {{ if (sessionStorage.getItem('promoClosed')) bar.remove(); }} catch(e){{}}
+  bar.querySelector('.promo-cta').addEventListener('click', function(){{
+    try {{ if (typeof gtag === 'function') gtag('event','select_promotion',{{promotion_name:'black_friday_2026'}}); }} catch(e){{}}
+  }});
+}})();
+
 document.addEventListener('click', function(ev){{
   const a = ev.target.closest && ev.target.closest('a[href^="tel:"], a[href^="sms:"]');
   if(!a) return;
