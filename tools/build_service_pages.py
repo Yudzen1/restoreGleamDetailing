@@ -7,7 +7,7 @@
 """
 import io, re, json, os
 
-BASE  = 'https://yudzen1.github.io/restoreGleamDetailing/'
+BASE  = 'https://restoregleam.vip/'
 PHONE = '+18479643474'
 PHONE_H = '(847) 964-3474'
 EMAIL = 'restoregleamdetailing@gmail.com'
