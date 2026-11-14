@@ -189,15 +189,19 @@
         <p class="muted">Pricing depends on vehicle size, condition and the work requested. Ask about access to water, power and a suitable workspace when booking.</p>
       </div>
       <form id="quote-form" class="quote-panel">
-        <h3>Build your text request</h3>
+        <h3>Request your free quote</h3>
+        <label for="quote-name">Your name</label><input id="quote-name" maxlength="120" autocomplete="name" placeholder="e.g., Mike Johnson" required>
+        <label for="quote-phone">Phone number</label><input id="quote-phone" type="tel" maxlength="40" autocomplete="tel" placeholder="e.g., (847) 555-0123" required>
+        <label for="quote-email">Email (optional)</label><input id="quote-email" type="email" maxlength="120" autocomplete="email" placeholder="you@example.com">
         <label for="quote-service">Service</label><select id="quote-service" required><option value="">Choose a service</option><option>Interior Detailing</option><option>Exterior Wash &amp; Wax</option><option>Interior + Exterior Detailing</option><option>Paint Correction / Polishing</option><option>Ceramic Coating</option><option>Headlight Restoration</option><option>Touch-Up Paint</option><option>Boat Detailing</option></select>
         <label for="quote-vehicle">Vehicle or boat model</label><input id="quote-vehicle" maxlength="120" placeholder="e.g., 2014 Tesla Model S" required>
         <label for="quote-location">Suburb or ZIP code</label><input id="quote-location" maxlength="120" autocomplete="postal-code" required>
         <label for="quote-notes">Condition / preferred day (optional)</label><textarea id="quote-notes" maxlength="600" placeholder="Pet hair, stains, scratches, preferred day…"></textarea>
-        <button class="btn" type="submit">Prepare My Text</button>
-        <p><small>This prepares a message on your device. Your request is sent only when you send it in your messaging app. Please attach photos there.</small></p>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="quote-company">Company</label><input id="quote-company" tabindex="-1" autocomplete="off"></div>
+        <button class="btn" type="submit">Send My Request</button>
+        <p><small>We usually reply the same day. Photos help us quote accurately — after sending, you can text them to us in one tap.</small></p>
         <div id="quote-output" class="quote-output" aria-live="polite"></div>
-        <a id="quote-send" class="btn" hidden>Open Text Message</a>
+        <a id="quote-send" class="btn" hidden>Text Us Your Photos</a>
       </form>
     </div></section>
 
@@ -224,18 +228,70 @@
   <footer><div class="wrap">© Restore Gleam Detailing • Chicago & North Shore • <a href="tel:+18479643474">(847) 964-3474</a> • <a href="mailto:restoregleamdetailing@gmail.com">Email us</a> • <a href="https://www.instagram.com/restore_gleam_detailing/">Instagram</a></div></footer>
 <script>
 
-function makeQuote(service,vehicle,location,notes){
-  return ['Hi Restore Gleam! I would like a quote.','Service: '+service,'Vehicle / boat: '+vehicle,'Location: '+location,notes?'Notes: '+notes:'','I will attach photos. Please confirm the estimate and availability.'].filter(Boolean).join('\n');
+/* Restore Gleam — lead capture.
+   LEAD_ENDPOINT = URL веб-приложения Google Apps Script.
+   Пока строка пустая, форма работает по-старому (только SMS). */
+const LEAD_ENDPOINT = '';
+
+function val(id){ return (document.getElementById(id).value || '').trim(); }
+
+function makeQuote(d){
+  return ['Hi Restore Gleam! I would like a quote.',
+    'Name: '+d.name, 'Service: '+d.service, 'Vehicle / boat: '+d.vehicle,
+    'Location: '+d.zip, d.notes?'Notes: '+d.notes:'',
+    'I will attach photos. Please confirm the estimate and availability.'
+  ].filter(Boolean).join('\n');
 }
-document.getElementById('quote-form').addEventListener('submit',function(event){
+
+document.getElementById('quote-form').addEventListener('submit', function(event){
   event.preventDefault();
-  const val=id=>document.getElementById(id).value.trim();
-  const service=val('quote-service'),vehicle=val('quote-vehicle'),location=val('quote-location');
-  if(!service||!vehicle||!location){document.getElementById('quote-output').textContent='Please fill in the service, vehicle and location.';return;}
-  const message=makeQuote(service,vehicle,location,val('quote-notes'));
-  document.getElementById('quote-output').textContent=message;
-  const link=document.getElementById('quote-send');
-  link.href='sms:+18479643474?body='+encodeURIComponent(message);link.hidden=false;
+  const out  = document.getElementById('quote-output');
+  const link = document.getElementById('quote-send');
+  const btn  = this.querySelector('button[type=submit]');
+
+  const d = { name:val('quote-name'), phone:val('quote-phone'), email:val('quote-email'),
+              service:val('quote-service'), vehicle:val('quote-vehicle'),
+              zip:val('quote-location'), notes:val('quote-notes'),
+              company:val('quote-company'), source:'Website' };
+
+  if(!d.name || !d.phone || !d.service || !d.vehicle || !d.zip){
+    out.textContent = 'Please fill in your name, phone, service, vehicle and location.';
+    return;
+  }
+
+  const message = makeQuote(d);
+  link.href = 'sms:+18479643474?body=' + encodeURIComponent(message);
+
+  if(!LEAD_ENDPOINT){
+    out.textContent = message;
+    link.hidden = false;
+    return;
+  }
+
+  btn.disabled = true;
+  out.textContent = 'Sending your request\u2026';
+
+  fetch(LEAD_ENDPOINT, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(d)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(res){
+    if(res && res.status === 'ok'){
+      out.textContent = 'Thanks, ' + d.name + '! We received your request and will contact you at ' + d.phone + '. Next step: text us 2\u20133 photos so we can quote accurately.';
+      link.hidden = false;
+      btn.disabled = true;
+      btn.textContent = 'Request Sent';
+    } else {
+      throw new Error('rejected');
+    }
+  })
+  .catch(function(){
+    out.textContent = 'We could not send that automatically. Please text or call us at (847) 964-3474 \u2014 tap the button below and your details are already filled in.';
+    link.hidden = false;
+    btn.disabled = false;
+  });
 });
 
 </script>
