@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yudzen1.github.io/restoreGleamDetailing/sitemap.xml
+Sitemap: https://restoregleam.vip/sitemap.xml
