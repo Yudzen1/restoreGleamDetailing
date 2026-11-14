@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1YXYM2Y1Q7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1YXYM2Y1Q7');
+  </script>
   <title>Mobile Auto Detailing in Chicago & North Shore | Restore Gleam</title>
   <meta name="description" content="Mobile car detailing in Chicago & the North Shore. Interior, paint correction, ceramic coating. Free estimate." />
   <link rel="canonical" href="https://yudzen1.github.io/restoreGleamDetailing/" />
@@ -524,6 +532,13 @@
 /* Restore Gleam — lead capture.
    LEAD_ENDPOINT = URL веб-приложения Google Apps Script.
    Пока строка пустая, форма работает по-старому (только SMS). */
+/* Отправка события в GA4. Если gtag недоступен (адблок, офлайн) — молча пропускаем.
+   В аналитику НЕ уходят имя, телефон, email и ZIP: передавать персональные
+   данные в Google Analytics запрещено их же правилами. Только услуга. */
+function track(name, params){
+  try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){}
+}
+
 const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxhT55oiZDuvLfCWeIitxBlU5D1R8RikS0BjmEisOTlco4TuhTInvGxKmkSM90qqKmw0w/exec';
 
 function val(id){ return (document.getElementById(id).value || '').trim(); }
@@ -573,6 +588,7 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
   .then(function(res){
     if(res && res.status === 'ok'){
       out.textContent = 'Thanks, ' + d.name + '! We received your request and will contact you at ' + d.phone + '. Next step: text us 2\u20133 photos so we can quote accurately.';
+      track('generate_lead', { service: d.service, method: 'website_form' });
       link.hidden = false;
       btn.disabled = true;
       btn.textContent = 'Request Sent';
@@ -581,12 +597,21 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
     }
   })
   .catch(function(){
+    track('lead_form_error', { service: d.service });
     out.textContent = 'We could not send that automatically. Please text or call us at (847) 964-3474 \u2014 tap the button below and your details are already filled in.';
     link.hidden = false;
     btn.disabled = false;
   });
 });
 
+
+
+/* Звонки и SMS по ссылкам на странице — тоже обращения, их нужно считать. */
+document.addEventListener('click', function(ev){
+  const a = ev.target.closest && ev.target.closest('a[href^="tel:"], a[href^="sms:"]');
+  if(!a) return;
+  track('contact', { method: a.getAttribute('href').indexOf('tel:') === 0 ? 'phone_call' : 'sms' });
+}, true);
 </script>
 </body>
 </html>
