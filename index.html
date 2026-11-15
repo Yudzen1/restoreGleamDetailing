@@ -10,6 +10,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-1YXYM2Y1Q7');
+    gtag('config', 'AW-18054578455');
   </script>
   <title>Mobile Auto Detailing in Chicago & North Shore | Restore Gleam</title>
   <meta name="description" content="Mobile car detailing in Chicago & the North Shore. Interior, paint correction, ceramic coating. Free estimate." />
@@ -615,6 +616,7 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
     if(res && res.status === 'ok'){
       out.textContent = 'Thanks, ' + d.name + '! We received your request and will contact you at ' + d.phone + '. Next step: text us 2\u20133 photos so we can quote accurately.';
       track('generate_lead', { service: d.service, method: 'website_form' });
+      track('conversion', { send_to: 'AW-18054578455/mdRpCI_55LgdEJeCjKFD', value: 1.0, currency: 'USD' });
       link.hidden = false;
       btn.disabled = true;
       btn.textContent = 'Request Sent';
