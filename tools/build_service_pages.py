@@ -239,6 +239,7 @@ def page(sv):
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', '{ga}');
+    gtag('config', 'AW-18054578455');
   </script>
   <title>{title}</title>
   <meta name="description" content="{desc}" />
@@ -367,6 +368,7 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
       out.textContent = 'Thanks, ' + d.name + '! We received your request and will contact you at ' + d.phone + '. Next step: text us 2\\u20133 photos so we can quote accurately.';
       link.hidden = false; btn.textContent = 'Request Sent';
       track('generate_lead', {{ service: d.service, method: LEAD_SOURCE }});
+      track('conversion', {{ send_to: 'AW-18054578455/mdRpCI_55LgdEJeCjKFD', value: 1.0, currency: 'USD' }});
     }} else {{ throw new Error('rejected'); }}
   }})
   .catch(function(){{
