@@ -339,6 +339,8 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
   const out  = document.getElementById('quote-output');
   const link = document.getElementById('quote-send');
   const btn  = this.querySelector('button[type=submit]');
+  // Ignore repeated Enter/submit events while sending or after an accepted request.
+  if(btn.disabled) return;
 
   const d = {{ name:val('quote-name'), phone:val('quote-phone'), email:val('quote-email'),
               service:val('quote-service'), vehicle:val('quote-vehicle'),
@@ -360,7 +362,10 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
   btn.disabled = true;
   out.textContent = 'Sending your request\\u2026';
 
-  fetch(LEAD_ENDPOINT, {{ method:'POST',
+  const controller = new AbortController();
+  const requestTimeout = setTimeout(function(){{ controller.abort(); }}, 30000);
+
+  fetch(LEAD_ENDPOINT, {{ method:'POST', signal:controller.signal,
     headers:{{'Content-Type':'text/plain;charset=utf-8'}}, body: JSON.stringify(d) }})
   .then(function(r){{ return r.json(); }})
   .then(function(res){{
@@ -373,9 +378,11 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
   }})
   .catch(function(){{
     track('lead_form_error', {{ service: d.service }});
-    out.textContent = 'We could not send that automatically. Please text or call us at {phone_h} \\u2014 tap the button below and your details are already filled in.';
-    link.hidden = false; btn.disabled = false;
-  }});
+    out.textContent = 'We could not confirm whether your request arrived. To avoid sending it twice, please text or call us at {phone_h}. Your details are ready in the button below.';
+    link.hidden = false; btn.disabled = true;
+    btn.textContent = 'Please Text or Call';
+  }})
+  .finally(function(){{ clearTimeout(requestTimeout); }});
 }});
 
 
