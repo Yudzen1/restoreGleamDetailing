@@ -1,6 +1,14 @@
 name: Website health
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'tools/**'
+      - '.github/workflows/website-health.yml'
   pull_request:
     paths:
       - '*.html'
